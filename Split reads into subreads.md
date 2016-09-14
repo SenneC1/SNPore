@@ -1,9 +1,9 @@
 
+## Perface
 ### Context:
 52 SNP locations were PCR amplified and the amplicons ligated before nanopore sequencing.  The reads are split into potential amplicons by looking up the primer pairs using fuzzy regex and amplicon size constraints.
 
-
-    # Checking current fast5 format
+## Checking current fast5 format
     #
     import h5py
     
@@ -16,100 +16,7 @@
     
     f5.visit(printname)
 
-    Analyses (group)
-    Analyses/Basecall_1D_000 (group)
-    Analyses/Basecall_1D_000/BaseCalled_complement (group)
-    Analyses/Basecall_1D_000/BaseCalled_complement/Events 
-    Analyses/Basecall_1D_000/BaseCalled_complement/Fastq 
-    Analyses/Basecall_1D_000/BaseCalled_complement/Model 
-    Analyses/Basecall_1D_000/BaseCalled_template (group)
-    Analyses/Basecall_1D_000/BaseCalled_template/Events 
-    Analyses/Basecall_1D_000/BaseCalled_template/Fastq 
-    Analyses/Basecall_1D_000/BaseCalled_template/Model 
-    Analyses/Basecall_1D_000/Configuration (group)
-    Analyses/Basecall_1D_000/Configuration/aggregator (group)
-    Analyses/Basecall_1D_000/Configuration/basecall_1d (group)
-    Analyses/Basecall_1D_000/Configuration/basecall_2d (group)
-    Analyses/Basecall_1D_000/Configuration/calibration_strand (group)
-    Analyses/Basecall_1D_000/Configuration/components (group)
-    Analyses/Basecall_1D_000/Configuration/general (group)
-    Analyses/Basecall_1D_000/Configuration/hairpin_align (group)
-    Analyses/Basecall_1D_000/Configuration/post_processing (group)
-    Analyses/Basecall_1D_000/Configuration/post_processing.3000Hz (group)
-    Analyses/Basecall_1D_000/Configuration/split_hairpin (group)
-    Analyses/Basecall_1D_000/Log 
-    Analyses/Basecall_1D_000/Summary (group)
-    Analyses/Basecall_1D_000/Summary/basecall_1d_complement (group)
-    Analyses/Basecall_1D_000/Summary/basecall_1d_template (group)
-    Analyses/Basecall_2D_000 (group)
-    Analyses/Basecall_2D_000/BaseCalled_2D (group)
-    Analyses/Basecall_2D_000/BaseCalled_2D/Alignment 
-    Analyses/Basecall_2D_000/BaseCalled_2D/Fastq 
-    Analyses/Basecall_2D_000/Configuration (group)
-    Analyses/Basecall_2D_000/Configuration/aggregator (group)
-    Analyses/Basecall_2D_000/Configuration/basecall_1d (group)
-    Analyses/Basecall_2D_000/Configuration/basecall_2d (group)
-    Analyses/Basecall_2D_000/Configuration/calibration_strand (group)
-    Analyses/Basecall_2D_000/Configuration/components (group)
-    Analyses/Basecall_2D_000/Configuration/general (group)
-    Analyses/Basecall_2D_000/Configuration/hairpin_align (group)
-    Analyses/Basecall_2D_000/Configuration/post_processing (group)
-    Analyses/Basecall_2D_000/Configuration/post_processing.3000Hz (group)
-    Analyses/Basecall_2D_000/Configuration/split_hairpin (group)
-    Analyses/Basecall_2D_000/HairpinAlign (group)
-    Analyses/Basecall_2D_000/HairpinAlign/Alignment 
-    Analyses/Basecall_2D_000/Log 
-    Analyses/Basecall_2D_000/Summary (group)
-    Analyses/Basecall_2D_000/Summary/basecall_2d (group)
-    Analyses/Basecall_2D_000/Summary/hairpin_align (group)
-    Analyses/Basecall_2D_000/Summary/post_process_complement (group)
-    Analyses/Basecall_2D_000/Summary/post_process_template (group)
-    Analyses/Calibration_Strand_000 (group)
-    Analyses/Calibration_Strand_000/Configuration (group)
-    Analyses/Calibration_Strand_000/Configuration/aggregator (group)
-    Analyses/Calibration_Strand_000/Configuration/basecall_1d (group)
-    Analyses/Calibration_Strand_000/Configuration/basecall_2d (group)
-    Analyses/Calibration_Strand_000/Configuration/calibration_strand (group)
-    Analyses/Calibration_Strand_000/Configuration/components (group)
-    Analyses/Calibration_Strand_000/Configuration/general (group)
-    Analyses/Calibration_Strand_000/Configuration/hairpin_align (group)
-    Analyses/Calibration_Strand_000/Configuration/post_processing (group)
-    Analyses/Calibration_Strand_000/Configuration/post_processing.3000Hz (group)
-    Analyses/Calibration_Strand_000/Configuration/split_hairpin (group)
-    Analyses/Calibration_Strand_000/Log 
-    Analyses/Calibration_Strand_000/Summary (group)
-    Analyses/EventDetection_000 (group)
-    Analyses/EventDetection_000/Configuration (group)
-    Analyses/EventDetection_000/Configuration/abasic_detection (group)
-    Analyses/EventDetection_000/Configuration/event_detection (group)
-    Analyses/EventDetection_000/Configuration/hairpin_detection (group)
-    Analyses/EventDetection_000/Reads (group)
-    Analyses/EventDetection_000/Reads/Read_58 (group)
-    Analyses/EventDetection_000/Reads/Read_58/Events 
-    Analyses/Hairpin_Split_000 (group)
-    Analyses/Hairpin_Split_000/Configuration (group)
-    Analyses/Hairpin_Split_000/Configuration/aggregator (group)
-    Analyses/Hairpin_Split_000/Configuration/basecall_1d (group)
-    Analyses/Hairpin_Split_000/Configuration/basecall_2d (group)
-    Analyses/Hairpin_Split_000/Configuration/calibration_strand (group)
-    Analyses/Hairpin_Split_000/Configuration/components (group)
-    Analyses/Hairpin_Split_000/Configuration/general (group)
-    Analyses/Hairpin_Split_000/Configuration/hairpin_align (group)
-    Analyses/Hairpin_Split_000/Configuration/post_processing (group)
-    Analyses/Hairpin_Split_000/Configuration/post_processing.3000Hz (group)
-    Analyses/Hairpin_Split_000/Configuration/split_hairpin (group)
-    Analyses/Hairpin_Split_000/Log 
-    Analyses/Hairpin_Split_000/Summary (group)
-    Analyses/Hairpin_Split_000/Summary/split_hairpin (group)
-    UniqueGlobalKey (group)
-    UniqueGlobalKey/channel_id (group)
-    UniqueGlobalKey/context_tags (group)
-    UniqueGlobalKey/tracking_id (group)
-
-
-
-    # Extract fastq sequences out of the fast5 containers generated by the Nanopore basecalling application
-    # 
+## Extract fastq sequences out of the fast5 containers generated by the Nanopore basecalling application
     
     import h5py, glob
     
@@ -133,12 +40,7 @@
     print('{}/{} fast5 files without called fastq sequence'.format(withoutFQcounter, fast5FileCount))
 
 
-    0/14324 fast5 files without called fastq sequence
-
-
-
-    # Plot read length distribution
-    #
+##Plot read length distribution
     
     %matplotlib inline
     
@@ -158,7 +60,7 @@
 
 
 
-    # Load primer sequences (comma separated: snp_name,forward_primer_seq,reverse_primer_seq)
+## Load primer sequences (comma separated: snp_name,forward_primer_seq,reverse_primer_seq)
     #
     
     primerFile = '/media/sf_vm_shared/nanopore/snp_data/primers2.csv'
@@ -182,8 +84,7 @@
 
 
 
-    # Load sequencing data (ligated alleles)
-    #
+## Load sequencing data (ligated alleles)
     
     readFile = '/media/sf_vm_shared/nanopore/results/ligated_snp_amplicon_reads.fastq'
     readData = {}
@@ -204,12 +105,8 @@
     print('Loaded {} sequences'.format(len(readData)))
 
 
-    Loaded 14324 sequences
-
-
-
-    # Utility functions
-    #
+   
+## Splitting reads into subreads based on primersequences
     
     def reverseComplement(seq):
       transTab = str.maketrans('agctyrwskmdvhbAGCTYRWSKMDVHB', 'tcgarywsmkhbdvTCGARYWSMKHBDV')
