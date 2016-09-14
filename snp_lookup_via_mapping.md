@@ -1,8 +1,6 @@
 
-
-    # Init
-    #
-    
+## Dependencies
+   
     snpFile   = '/home/senne/nanopore/SNP/known_SNP_sequence/SNP_sequence.fasta'  # REMOVE FIRST LINE IN ORIGINAL FILE (BREAKS FASTA FORMAT)
     readFile  = '/home/senne/nanopore/SNP/Nanopore_data/2_potential_snp_amplicons_3mism.fasta'
     resultDir = '/home/senne/nanopore/SNP/results_yannick'
@@ -22,7 +20,7 @@
     52
 
 
-## Info on the fastq file
+# Info on the fastq file
 
 
     #from collections import Counter
@@ -75,8 +73,8 @@
 
 
 
-    # Map reads to reference sequences
-    #
+# Map reads to reference sequences
+    
     
     # Build index of the references
     !{bwa} index {snpFile}
@@ -104,7 +102,7 @@
 
 
     # Make sorted bam and index
-    #
+    
     
     !{samtools} view -Sbu {resultDir}/ONTGAP4ttt.sam | {samtools} sort -o {resultDir}/ONTGAP4ttt_sorted.bam -
     !{samtools} index {resultDir}/ONTGAP4ttt_sorted.bam {resultDir}/ONTGAP4ttt_sorted.bam.bai
@@ -116,7 +114,7 @@
 
 
     # Display some stats
-    #
+    
     
     !{samtools} flagstat {resultDir}/ONTGAP4ttt_sorted.bam
 
