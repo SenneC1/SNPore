@@ -1,20 +1,21 @@
 #SNP Detection
 
 ## Setting the dependencies
-   
-    snpFile   = '/home/senne/nanopore/SNP/known_SNP_sequence/SNP_sequence.fasta'  # REMOVE FIRST LINE IN ORIGINAL FILE (BREAKS FASTA FORMAT)
+```python
+    snpFile   = '/home/senne/nanopore/SNP/known_SNP_sequence/SNP_sequence.fasta'
     readFile  = '/home/senne/nanopore/SNP/Nanopore_data/2_potential_snp_amplicons_3mism.fasta'
     resultDir = '/home/senne/nanopore/SNP/results_yannick'
-    fastq_file_name= '/home/senne/nanopore/SNP/Nanopore_data/ligatedSNPs.fastq'
-    bwa       = '/opt/tools/bwa-0.7.15'            # v0.7.5
+    fastqFile = '/home/senne/nanopore/SNP/Nanopore_data/ligatedSNPs.fastq'
+    bwa       = '/opt/tools/bwa-0.7.15'     # v0.7.5
     samtools  = '/opt/tools/samtools-1.3.1' # v1.3.1
     bcftools  = '/opt/tools/bcftools-1.3.1' # v1.3.1
-    
+```
+```python
     # Check
     !ls {snpFile}
     print('Number of SNPs in reference file:')
     !grep -c ">" {snpFile}
-
+```
 
     /home/senne/nanopore/SNP/known_SNP_sequence/SNP_sequence.fasta
     Number of SNPs in reference file:
@@ -22,35 +23,31 @@
 
 
 ## Info on the fastq file
-
-
-    #from collections import Counter
-    #fastq_file_name = 'ligatedSTRs1.fastq'
-    #histogram_data = Counter()
+```python
     hist_array = []
     hist_arrayG = []
     hist_arrayA = []
     hist_arrayC = []
     hist_arrayT = []
-    with open(fastq_file_name, "rb") as infile:
+    with open(fastqFile, "rb") as infile:
         for line in infile:
             if line.startswith(b'G'):
                 read_length = len(line[:-1]) #Last char is \n
                 #histogram_data[read_length] += 1
                 hist_arrayG.append(read_length)
-    with open(fastq_file_name, "rb") as infile:
+    with open(fastqFile, "rb") as infile:
         for line in infile:
             if line.startswith(b'A'):
                 read_length = len(line[:-1]) #Last char is \n
                 #histogram_data[read_length] += 1
                 hist_arrayA.append(read_length) 
-    with open(fastq_file_name, "rb") as infile:
+    with open(fastqFile, "rb") as infile:
         for line in infile:
             if line.startswith(b'C'):
                 read_length = len(line[:-1]) #Last char is \n
                 #histogram_data[read_length] += 1
                 hist_arrayC.append(read_length) 
-    with open(fastq_file_name, "rb") as infile:
+    with open(fastqFile, "rb") as infile:
         for line in infile:
             if line.startswith(b'T'):
                 read_length = len(line[:-1]) #Last char is \n
@@ -65,10 +62,10 @@
     import numpy as np
     
     len (hist_array), np.mean(hist_array), np.median(hist_array) , max(hist_array), np.std(hist_array)
-
+```
 
 ## Map reads to reference sequences
-    
+```    
     # Build index of the references
     !{bwa} index {snpFile}
     
@@ -84,26 +81,25 @@
     # Display some stats
     
     !{samtools} flagstat {resultDir}/ONTGAP4ttt_sorted.bam
+```
 
  ## Generate vcf file from bam file. Needs the reference and its index file 
-    
-    # Note: the commands below are for samtools and bcftools v1.3.1 (will not work on v0.1.19!)
+```    
+    # Note: the commands below are for samtools and bcftools v1.3.1
     
     # Reporting all positions
     !{samtools} mpileup -d 100000 -uf {snpFile} {resultDir}/ONTGAP4ttt_sorted.bam | {bcftools} call -V indels -m - > {resultDir}/ONTGAP4ttt_sorted.bam.vcf
     
-    # Reporting variants only (excludes SNPs homozygous for reference allele)
-    !{samtools} mpileup -d 100000 -uf {snpFile} {resultDir}/ONTGAP4ttt_sorted.bam | {bcftools} call -V indels -mv - > {resultDir}/ONTGAP4yyy_sorted.bam.vcf
-    
     print('Done')
+```
 
 ## Check the content of the vcf file
-    
+```
     !head -n 100 {resultDir}/ONTGAP2ttt_sorted.bam.vcf
-
+```
 
 ## Get SNP profile
-
+```python
     snpData = {}
     
     with open(resultDir+'/ONTGAP4ttt_sorted.bam.vcf') as f:
@@ -158,8 +154,8 @@
                 f.write(','.join([s, str(totalDepth), snpData[s]['ref'], '{:.1f}'.format(100*refDepth/totalDepth), snpData[s]['alt'], '{:.1f}'.format(100*altDepth/totalDepth), genotype]) + '\n')
                 # DEBUG
                 print('  {} ({})  {} ({:.1f} %)  {} ({:.1f} %)'.format(s, totalDepth, snpData[s]['ref'], 100*refDepth/totalDepth, snpData[s]['alt'], 100*altDepth/totalDepth))
-
-
+```
+```
     Got data for 52 SNPs:
       rs1005533 (99)  A (61.6 %)  G (38.4 %)
       rs1015250 (67)  C (3.0 %)  G (97.0 %)
@@ -213,3 +209,4 @@
       rs917118 (407)  C (99.8 %)
       rs938283 (101)  C (71.3 %)  T (28.7 %)
       rs964681 (81)  C (3.7 %)  T,G (96.3 %)
+```
