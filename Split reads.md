@@ -245,12 +245,13 @@
 
 
 
-    # Count the number of retrieved amplicons
+## Count the number of retrieved amplicons
+```python    
     #
     !grep -c ">" /media/sf_vm_shared/nanopore/results/potential_snp_amplicons_3mism.fasta
 
     23057
-
+```
 
 
     
