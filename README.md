@@ -3,13 +3,12 @@ Forensic Nanopore SNP sequencing
 
 ## Synopsis
 
-The capability of Oxford Nanopore Technologies’ (ONT) handheld sequencer MinION™ to created a forensic SNP profile was tested. 
-In order to bypass the minimum fragment length requirement of 100 bp, set by the Metrichor base-calling software, the PCR amplicons have to be pooled and ligated randomly to create longer fragments.
-This repository contains the code to split the concatenated reads into to subreads and the subsequent SNP detection. 
+The aim of the paper (Forensic SNP Analysis using Nanopore MinION™ Sequencing) associating this repository was to asses the capability of Oxford Nanopore Technologies’ (ONT) handheld sequencer MinION™ to created a forensic SNP based profile. A 
 
 ## Motivation
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain why the project exists.
+The cloud based base calling software Metrichor being used default by ONT offers fully integrated, bespoke, real-time analysis solutions based on scalable, real time nanopore sensing technologies. As ONT sequencing was primarerly designed to analyze long (>1kb) reads the base calling lacks the possibility to analyze short (<100bp) fragments. 
+To bypass this minimum fragment length requirement, the PCR amplicons have to be pooled and ligated randomly to create longer fragments. This repository contains the code to split the concatenated reads into to subreads and the subsequent SNP detection. 
 
 ## Installation
 
