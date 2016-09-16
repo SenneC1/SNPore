@@ -1,7 +1,13 @@
 # SNPore
 Forensic Nanopore SNP sequencing
 
-## Synopsis
+## Background
+
+DNA analysis has become the cornerstone of contemporary forensic science. Altough most forensic DNA testing stil utilizing PCR and capillary electrophoresis (CE)-based analysis methods a transition to sequencing techniques is at hand.
+Next generation targetted sequencing allows forensic scientists worldwide to harness the full potential of their DNA sample. 
+Targetted sequencing allows casework and database efforts to be directed toward the genomic regions that best answer forensic questions
+
+##Aim
 
 The aim of the paper (Forensic SNP Analysis using Nanopore MinION™ Sequencing) associating this repository was to asses the capability of Oxford Nanopore Technologies’ (ONT) handheld sequencer MinION™ to created a forensic SNP based profile. 
 
