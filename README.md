@@ -17,9 +17,13 @@ The cloud based base calling software Metrichor being used default by ONT offers
 To bypass this hiatus, the PCR amplicons were be pooled and ligated randomly to artifically create longer fragments. 
 This repository contains the code to identify, split and allocate the concatenated reads into to subreads and the subsequent SNP detection. 
 
-## Installation
+## Links
 
-Provide code examples and explanations of how to get the project.
+Oxford Nanopore Technologies
+https://nanoporetech.com/
+
+Metrichor
+https://metrichor.com/
 
 ## Contributors
 
