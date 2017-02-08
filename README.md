@@ -32,5 +32,5 @@ https://www.ebi.ac.uk
 Senne Cornelis,
 Yannick Gansemans,
 Sander Willems,
-Christophe Van Neste
+Christophe Van Neste,
 Filip Van Nieuwerburgh 
