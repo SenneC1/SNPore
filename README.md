@@ -16,6 +16,15 @@ The cloud based base calling software Metrichor being used by ONT offers a fully
 To bypass this hiatus, the short PCR amplicons were be pooled and ligated randomly to artifically create longer sequencable fragments.
 This repository contains the code to identify, split and allocate the concatenated reads into to subreads and the subsequent SNP detection. 
 
+## Method
+
+Part 1: Splicing reads into subreads based on identified primers
+        A fuzzy regex is used allowing up to 3 sequencing errors to occur at a random position in the primer sequence. 
+
+Part 2: Variant identification 
+        The subreads are mapped against a reference database of all loci consisting of the SNP and 25 nucleotides of flanking region on         either side.
+        The aligment data is used to generate a table of all nucleotide variants and create a SNP profile
+        
 ## Links
 
 Oxford Nanopore Technologies
